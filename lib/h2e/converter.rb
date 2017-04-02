@@ -31,7 +31,7 @@ module H2E
         end
         if not @html_base_url.nil?
           if doc.name == "a"
-            href = doc.attribute("href").value
+            href = doc.attribute("href")&.value
             if href =~ %r(^/.+)
               doc.set("href", "#{@html_base_url}#{href}")
             elsif (href =~ %r(^(http|https)://.+)).nil?
